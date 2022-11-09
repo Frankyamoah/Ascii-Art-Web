@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func Asciiart(text, filename string) string {
+func Asciiart(text, fontname string) string {
 
 	for _, word := range text {
 		if word < 32 || word > 126 {
@@ -15,7 +15,7 @@ func Asciiart(text, filename string) string {
 	}
 
 	// This reads the standard.txt file and checks for error
-	bytes, err := os.ReadFile("./asciifiles/" + filename + ".txt")
+	bytes, err := os.ReadFile("./asciifiles/" + fontname + ".txt")
 	if err != nil {
 		fmt.Println(err)
 		return ""
@@ -38,16 +38,12 @@ func printArtAscii(userInput string, Ascii []string) string {
 
 		for _, character := range userInput {
 
-			//Match users input(rune) with each row of Ascii Art
 			skip := (character - 32) * 9
-			// print the line from art file at the position specified
-			//by calculation of skip to find the corresponding line in to users input
-			fmt.Print(Ascii[line+int(skip)])
+			empty += Ascii[line+int(skip)]
 
+			continue
 		}
 		fmt.Println()
-		// Tells the function to skip to the next line before commencing next loop
-
 	}
 	return empty
 

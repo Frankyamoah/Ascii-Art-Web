@@ -4,7 +4,7 @@
           <!-- <meta charset="UTF-8">
             <meta name="viewport" 
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> -->
-            <title>INDEX</title>
+            <title>Text To Ascii Converter</title>
            <style>
             section{
                 background-color: rgb(10, 62, 10);
@@ -35,14 +35,12 @@
            </style>
         </head>
         <body>
-            <form action="/save" method="POST">
-            <div>
-            <div class="container">
-                <header>
+           
+                
         <section>
             <form action="/process" method="POST">
                 <label for="Font">Font</label>
-                <select name="usersinput" id="Font">
+                <select name="usersinput" id="usersinput">
                 <option value="none"></option>
                 <option value="thinker-toy">thinkertoy</option>
                 <option value="standard">standard</option>
@@ -51,16 +49,18 @@
                 <br>
                 <br>
                 <label for="outputt"></label>
-                <textarea type="text" name="asciitext" id="outputt" placeholder="Type something">
+                <textarea type="text" name="asciitext" id="asciitext" placeholder="Type something">
                 </textarea>
                 <button type="submit">Enter</button>
+
             </form>
         </section>
-    </header>
+   
+    <div>
+        <pre>{{ .Normaltext }}</pre>
     </div>
-    </div>
-</form>
-    <div style="margin-top:400px"></div>
+    
+   
     <footer id="main-footer">
         <p>Copyright &copy; 2022  Sumeya, Sam, Frank - ascii art web</p>
     </footer>
