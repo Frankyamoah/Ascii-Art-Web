@@ -1,0 +1,69 @@
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+          <!-- <meta charset="UTF-8">
+            <meta name="viewport" 
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> -->
+            <title>INDEX</title>
+           <style>
+            section{
+                background-color: rgb(10, 62, 10);
+                color: #fff;
+                width: 400px;
+                height: 200px;
+                margin-left: 9em;
+            }
+            option{
+                background-color: rgb(190, 237, 96);
+            }
+            textarea{
+                height: 120px;
+                align-self: start;
+                background-color: rgb(207, 243, 207);
+            }
+            select{
+                margin-left: 2px;
+                background-color: rgb(207, 243, 207);
+            }
+            label{
+                margin-left: 5em;
+            }
+            footer{
+                text-align: center;
+            }
+            
+           </style>
+        </head>
+        <body>
+            <form action="/save" method="POST">
+            <div>
+            <div class="container">
+                <header>
+        <section>
+            <form action="/process" method="POST">
+                <label for="Font">Font</label>
+                <select name="usersinput" id="Font">
+                <option value="none"></option>
+                <option value="thinker-toy">thinkertoy</option>
+                <option value="standard">standard</option>
+                <option value="shadow">shadow</option>
+                </select>
+                <br>
+                <br>
+                <label for="outputt"></label>
+                <textarea type="text" name="asciitext" id="outputt" placeholder="Type something">
+                </textarea>
+                <button type="submit">Enter</button>
+            </form>
+        </section>
+    </header>
+    </div>
+    </div>
+</form>
+    <div style="margin-top:400px"></div>
+    <footer id="main-footer">
+        <p>Copyright &copy; 2022  Sumeya, Sam, Frank - ascii art web</p>
+    </footer>
+    
+        </body>
+    </html>

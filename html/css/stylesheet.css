@@ -1,0 +1,29 @@
+header{
+    text-align: center;
+    color: white;
+    background-color: rgb(8, 8, 64);
+}
+
+.container{
+    width: 75%;
+    margin: auto;
+}
+
+body{
+
+    color: #555555;
+}
+
+input{
+    height: 100px;
+    text-align: start;
+
+}
+
+select{
+    margin-right: 2em;
+}
+
+footer{
+    text-align: center;
+}
