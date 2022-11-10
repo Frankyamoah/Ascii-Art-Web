@@ -39,11 +39,12 @@ func printArtAscii(userInput string, Ascii []string) string {
 		for _, character := range userInput {
 
 			skip := (character - 32) * 9
+
 			empty += Ascii[line+int(skip)]
 
-			continue
 		}
-		fmt.Println()
+		empty += "\n"
+		//	fmt.Println()
 	}
 	return empty
 
