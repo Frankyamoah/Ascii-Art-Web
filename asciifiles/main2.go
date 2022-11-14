@@ -6,45 +6,84 @@ import (
 	"strings"
 )
 
-func Asciiart(text, fontname string) string {
+func Asciiart(text, fontname []string) string {
 
-	for _, word := range text {
-		if word < 32 || word > 126 {
+	text2 := strings.Join(text, "")
+	font2 := strings.Join(fontname, "")
+
+	for _, word := range text2 {
+		if word > 128 {
 			return ""
 		}
 	}
 
+	for _, word := range text2 {
+		if word == '\n' {
+			word += '\n'
+		}
+	}
+
 	// This reads the standard.txt file and checks for error
-	bytes, err := os.ReadFile("./asciifiles/" + fontname + ".txt")
+	bytes, err := os.ReadFile("./asciifiles/" + font2 + ".txt")
 	if err != nil {
 		fmt.Println(err)
 		return ""
 	}
+
 	// splits text file by new line
-	newAscii := strings.Split(string(bytes), "\n")
+	var newAscii []string
 
+	if font2 == "thinker-toy" {
+		newAscii = strings.Split(string(bytes), "\r\n")
+
+	} else {
+		newAscii = strings.Split(string(bytes), "\n")
+
+	}
 	var userInput []string
+	var answer string
 
-	userInput = append(userInput, text)
+	newline := false
 
-	user3 := strings.Join(userInput, "")
-	return printArtAscii(user3, newAscii)
+	for j := 0; j < len(text); j++ {
+
+		if text[j] == "\r" {
+			if len(text) != j+1 && text[j+1] == "\n" {
+				newline = true
+				continue
+
+			}
+		}
+		if newline {
+			newline = false
+			answer += printArtAscii(userInput, newAscii)
+			userInput = []string{}
+			continue
+
+		}
+		userInput = append(userInput, text[j])
+
+	}
+	answer += printArtAscii(userInput, newAscii)
+	return answer
 }
 
-func printArtAscii(userInput string, Ascii []string) string {
+func printArtAscii(userInput []string, Ascii []string) string {
 	empty := ""
 	// loops through each row of individual ascii character in art file
 	for line := 1; line <= 8; line++ {
 
-		for _, character := range userInput {
+		for _, word := range userInput {
+			for _, character := range word {
 
-			skip := (character - 32) * 9
+				skip := (character - 32) * 9
 
-			empty += Ascii[line+int(skip)]
+				empty += Ascii[line+int(skip)]
+			}
 
 		}
 		empty += "\n"
-		//	fmt.Println()
+		//fmt.Println()
 	}
 	return empty
 

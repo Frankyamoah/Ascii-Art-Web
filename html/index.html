@@ -1,9 +1,7 @@
     <!DOCTYPE html>
-    <html lang="en">
+    <html>
         <head>
-          <!-- <meta charset="UTF-8">
-            <meta name="viewport" 
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> -->
+         
             <title>Text To Ascii Converter</title>
            <style>
             section{
@@ -18,15 +16,16 @@
             }
             textarea{
                 height: 120px;
-                align-self: start;
                 background-color: rgb(207, 243, 207);
+                text-align: left;
+                
             }
             select{
                 margin-left: 2em;
                 background-color: rgb(207, 243, 207);
             }
             label{
-                margin-left: 5em;
+                margin-left: 7em;
             }
             footer{
                 text-align: center;
@@ -42,14 +41,14 @@
                 <label for="Font">Font</label>
                 <select name="usersinput" id="usersinput">
                 <option value="none"></option>
-                <option value="thinker-toy">thinkertoy</option>
-                <option value="standard">standard</option>
-                <option value="shadow">shadow</option>
+                <option value="thinker-toy">Thinkertoy</option>
+                <option value="standard">Standard</option>
+                <option value="shadow">Shadow</option>
                 </select>
                 <br>
                 <br>
                 <label for="outputt"></label>
-                <textarea type="text" name="asciitext" id="asciitext" placeholder="Type something">
+                <textarea type="text" name="asciitext" id="asciitext">
                 </textarea>
                 <button type="submit">Enter</button>
 

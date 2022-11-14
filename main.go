@@ -2,8 +2,8 @@ package main
 
 import (
 	"asciiart-web/asciifiles"
-	"fmt"
 	"net/http"
+	"strings"
 	"text/template"
 )
 
@@ -32,41 +32,19 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func Processor(w http.ResponseWriter, r *http.Request) {
-	/*
-		if r.Method == "POST" {
-			t, _ := template.ParseFiles("index.html")
-			t.Execute(w, nil)
-		} else {
-			r.ParseForm()
-			fmt.Println(r.Form["asciitext"])
-		}*/
 
 	fontval := r.FormValue("usersinput")
-	//fmt.Println(fontval)
+	splitfont := strings.Split(fontval, "")
 
 	textval := r.FormValue("asciitext")
-	//fmt.Println(textval)
-	text := asciifiles.Asciiart(textval, fontval)
+	splittxt := strings.Split(textval, "")
+
+	text := asciifiles.Asciiart(splittxt, splitfont)
 
 	data := Text{
 		Normaltext: text,
 	}
 	tpl.ExecuteTemplate(w, "index.html", data)
-	fmt.Print(asciifiles.Asciiart(textval, fontval))
+	//fmt.Print(asciifiles.Asciiart(textval, fontval))
 
 }
-
-// func save(w http.ResponseWriter, r *http.Request) {
-// 	fontval := r.FormValue("usersinput")
-// 	//fmt.Println(fontval)
-
-// 	textval := r.FormValue("asciitext")
-// 	//fmt.Println(textval)
-
-// 	data := Text{
-// 		normaltext: asciifiles.Asciiart(textval, fontval),
-// 	}
-// 	tpl.ExecuteTemplate(w, "index.html", data)
-// 	fmt.Print(asciifiles.Asciiart(textval, fontval))
-
-// }
