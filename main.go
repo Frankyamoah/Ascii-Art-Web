@@ -42,16 +42,32 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 
 	fontval := r.FormValue("usersinput")
 	splitfont := strings.Split(fontval, "")
-
+	if fontval != "standard" && fontval != "shadow" && fontval != "thinker-toy"{
+		w.WriteHeader(http.StatusNotFound)
+		http.ServeFile(w, r, "html/Error500.html")
+		return
+	}
 	textval := r.FormValue("asciitext")
-	splittxt := strings.Split(textval, "")
 
+	splittxt := strings.Split(textval, "")
+	
 	text := asciifiles.Asciiart(splittxt, splitfont)
+	
 
 	data := Text{
 		Normaltext: text,
 	}
+	for _, word :=  range splittxt {
+		for _, character := range word {
+			if character > 128 {
+				w.WriteHeader(http.StatusNotFound)
+				http.ServeFile(w, r, "html/Error400.html")	
+				return
+			}
+		}
+	}
 	tpl.ExecuteTemplate(w, "index.html", data)
+
 	//fmt.Print(asciifiles.Asciiart(textval, fontval))
 
 }
