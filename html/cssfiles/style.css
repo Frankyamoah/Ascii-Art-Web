@@ -1,0 +1,26 @@
+section{
+    background-color: rgb(10, 62, 10);
+    color: #fff;
+    width: 60%;
+    height: 200px;
+    margin-left: 20%;
+}
+option{
+    background-color: rgb(190, 237, 96);
+}
+textarea{
+    height: 120px;
+    background-color: rgb(207, 243, 207);
+    text-align: left;
+    
+}
+select{
+    margin-left: 2em;
+    background-color: rgb(207, 243, 207);
+}
+label{
+    margin-left: 7em;
+}
+footer{
+    text-align: center;
+}

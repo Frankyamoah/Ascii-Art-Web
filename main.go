@@ -28,40 +28,41 @@ func main() {
 	http.HandleFunc("/Error500", Error400)
 }
 
+// If the URL path is not "/", then serve the 404 page. Otherwise, serve the index page
 func Index(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		w.WriteHeader(http.StatusNotFound)
+		//w.WriteHeader(http.StatusNotFound)
 		http.ServeFile(w, r, "html/Error404.html")
 		return
 	}
 	tpl.ExecuteTemplate(w, "index.html", nil)
-	
+
 }
 
 func Processor(w http.ResponseWriter, r *http.Request) {
 
 	fontval := r.FormValue("usersinput")
 	splitfont := strings.Split(fontval, "")
-	if fontval != "standard" && fontval != "shadow" && fontval != "thinker-toy"{
-		w.WriteHeader(http.StatusNotFound)
+
+	if fontval != "standard" && fontval != "shadow" && fontval != "thinker-toy" {
+		//w.WriteHeader(http.StatusNotFound)
 		http.ServeFile(w, r, "html/Error500.html")
 		return
 	}
 	textval := r.FormValue("asciitext")
 
 	splittxt := strings.Split(textval, "")
-	
+
 	text := asciifiles.Asciiart(splittxt, splitfont)
-	
 
 	data := Text{
 		Normaltext: text,
 	}
-	for _, word :=  range splittxt {
+	for _, word := range splittxt {
 		for _, character := range word {
 			if character > 128 {
 				w.WriteHeader(http.StatusNotFound)
-				http.ServeFile(w, r, "html/Error400.html")	
+				http.ServeFile(w, r, "html/Error400.html")
 				return
 			}
 		}
@@ -72,7 +73,8 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 
 }
 
-
+// The function Error404 takes in a response writer and a request, and then executes the Error404.html
+// template
 func Error404(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "Error404.html", nil)
 }
